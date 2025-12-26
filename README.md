@@ -84,6 +84,11 @@ This frontend is designed to be:
 
 ---
 
+## 🎨 Design
+https://www.figma.com/board/niVdJzTd0FK75zIqYrNyBx/Untitled?node-id=0-1&t=yM8Q2OiyT645HkWV-1
+
+---
+
 ## ⚙️ Tech Stack
 
 ### Android
