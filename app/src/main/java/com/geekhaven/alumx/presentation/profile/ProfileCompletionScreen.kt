@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,7 +52,6 @@ fun ProfileCompletionScreen() {
             .padding(16.dp)
     ) {
 
-        /* ---------- TOP BAR ---------- */
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
@@ -65,11 +65,26 @@ fun ProfileCompletionScreen() {
 
         Spacer(Modifier.height(20.dp))
 
-        /* ---------- PROFILE STRENGTH ---------- */
+      
         Row(Modifier.fillMaxWidth()) {
             Text("Profile Strength", color = Color.Gray)
             Spacer(Modifier.weight(1f))
             Text("75% Complete", color = blue)
+        }
+
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            interests.forEach { interest ->
+                SelectableChip(
+                    text = interest,
+                    selected = selectedInterests.contains(interest),
+                    onClick = {
+                        if (selectedInterests.contains(interest)) selectedInterests.remove(interest) else selectedInterests.add(interest)
+                    }
+                )
+            }
         }
 
         LinearProgressIndicator(
@@ -84,7 +99,7 @@ fun ProfileCompletionScreen() {
 
         Spacer(Modifier.height(24.dp))
 
-        /* ---------- TITLE ---------- */
+        
         Text(
             "Let's finish your profile.",
             color = Color.White,
@@ -100,7 +115,7 @@ fun ProfileCompletionScreen() {
 
         Spacer(Modifier.height(28.dp))
 
-        /* ---------- PROFILE PHOTO ---------- */
+      
         Column(
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -112,13 +127,13 @@ fun ProfileCompletionScreen() {
                     modifier = Modifier
                         .size(100.dp)
                         .clip(CircleShape)
-                        .background(Color(0xFFE0C4A6)), // Placeholder skin tone/image
+                        .background(Color(0xFFE0C4A6)),
                     contentAlignment = Alignment.Center
                 ) {
-                    // Placeholder for actual image
+                   
                 }
 
-                // Camera Icon Badge
+              
                 Box(
                     modifier = Modifier
                         .size(32.dp)
@@ -135,7 +150,7 @@ fun ProfileCompletionScreen() {
 
         Spacer(Modifier.height(32.dp))
 
-        /* ---------- FORM FIELDS ---------- */
+     
         ProfileTextField(graduationYear, { graduationYear = it }, "Graduation Year", "e.g. 2024")
         Spacer(Modifier.height(16.dp))
 
@@ -152,7 +167,7 @@ fun ProfileCompletionScreen() {
 
         Spacer(Modifier.height(24.dp))
 
-        /* ---------- SKILLS ---------- */
+     
         SectionTitle("Skills", "Add at least 3")
 
         OutlinedTextField(
@@ -215,9 +230,10 @@ fun ProfileCompletionScreen() {
 
         Spacer(Modifier.height(24.dp))
 
-        /* ---------- INTERESTS ---------- */
+      
         SectionTitle("Interests")
 
+ post-item
         @OptIn(ExperimentalLayoutApi::class)
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -238,9 +254,12 @@ fun ProfileCompletionScreen() {
             }
         }
 
+
+ main
+
         Spacer(Modifier.height(24.dp))
 
-        /* ---------- EXPERIENCE ---------- */
+       
         Text("Experience", color = Color.White, fontWeight = FontWeight.SemiBold)
 
         Spacer(Modifier.height(12.dp))
@@ -254,7 +273,7 @@ fun ProfileCompletionScreen() {
                 modifier = Modifier.padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Logo Placeholder
+            
                 Box(
                     modifier = Modifier
                         .size(48.dp)
@@ -292,7 +311,7 @@ fun ProfileCompletionScreen() {
 
         Spacer(Modifier.height(32.dp))
 
-        /* ---------- COMPLETE BUTTON ---------- */
+      
         Button(
             onClick = {},
             modifier = Modifier
@@ -308,7 +327,6 @@ fun ProfileCompletionScreen() {
     }
 }
 
-/* ---------- REUSABLE COMPONENTS ---------- */
 
 @Composable
 fun ProfileTextField(
